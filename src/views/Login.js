@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import logo from '../assets/img/logo.png'
 import '../assets/css/Login.css'
 
+import Loader from '../components/Loader'
+
 export default function Login() {
     const [isLoading, setIsLoading] = useState(false)
     const [mail, setMail] = useState('')
@@ -43,7 +45,7 @@ export default function Login() {
         }
     }
 
-    return isLoading ? (<>Loading ..</> ): (
+    return isLoading ? (<Loader /> ): (
         <>
             <div className='navbar'>
                 <h3 className='navbar-title'>Bienvenido</h3>
