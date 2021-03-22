@@ -1,0 +1,13 @@
+.footer-container {
+    height: 5vh;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #cfff66;
+}
+
+.footer-copy {
+    color: #292929;
+    font-weight: 700;
+}
