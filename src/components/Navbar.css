@@ -1,12 +1,22 @@
 .navbar {
     height: 12vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding-right: 20px;
     background-color: #292929;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, .5);
     color: #cfff66;
+}
+
+.navbar-toggle {
+    padding-left: 10px;
+}
+
+.navbar-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar-title{
@@ -18,16 +28,25 @@
     padding: 2px;
 }
 
+.toggle-box {
+    padding: 8px 15px;
+    border: .1px solid #cfff66;
+    border-radius: 8px;
+    font-size: larger;
+    font-weight: bolder;
+}
+
 @media only screen and (min-width: 401px) and (max-width: 540px) {
     .navbar {
         height: 9vh;
+        justify-content: space-between;
     }
 }
 
 @media only screen and (min-width: 540px) and (max-width: 960px) {
     .navbar {
         height: 8vh;
-        justify-content: flex-end;
+        justify-content: space-between;
     }
 
     .navbar-logo {
@@ -40,11 +59,19 @@
         height: 8vh;
         justify-content: flex-end;
     }
+
+    .navbar-toggle{
+        display: none;
+    }
 }
 
 @media only screen and (min-width: 1080px) {  
     .navbar {
         height: 8vh;
         justify-content: flex-end;
+    }
+
+    .navbar-toggle{
+        display: none;
     }
 }
