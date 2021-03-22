@@ -1,5 +1,6 @@
 .drawer-container {
-    width: 15%;
+    display: none;
+    width: 250px;
     height: 87vh;
     background-color: whitesmoke;
     box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2);
@@ -21,13 +22,11 @@
 }
 
 .drawer-options {
-    /* padding-top: 20px; */
     display: flex;
     justify-content: center;
 }
 
 .drawer-config {
-    /* padding-top: 20px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,4 +44,16 @@
 
 .drawer-options-list-item:hover {
     background-color: #cfff66;
+}
+
+/* @media only screen and (min-width: 960px) and (max-width: 1080px) {
+    .drawer-container {
+        display: block;
+    }
+} */
+
+@media only screen and (min-width: 960px) {  
+    .drawer-container {
+        display: block;
+    }
 }
