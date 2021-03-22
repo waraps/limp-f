@@ -1,14 +1,8 @@
-import Navbar from './components/Navbar'
-import Drawer from './components/Drawer'
-import Footer from './components/Footer'
+import Dashboard from './views/Dashboard'
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <Drawer />
-      <Footer />
-    </>
+    <Dashboard />
   );
 }
 
