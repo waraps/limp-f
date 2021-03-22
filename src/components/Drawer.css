@@ -1,0 +1,48 @@
+.drawer-container {
+    width: 15%;
+    height: 87vh;
+    background-color: whitesmoke;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.2);
+    color: #333;
+}
+
+.drawer-separator {
+    width: 95%;
+    margin: 10px auto;
+    border-bottom: .1px solid #ccc;
+}
+
+.drawer-title {
+    height: 5vh;
+    padding: 16px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.drawer-options {
+    /* padding-top: 20px; */
+    display: flex;
+    justify-content: center;
+}
+
+.drawer-config {
+    /* padding-top: 20px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.drawer-options-list {
+    width: 100%;
+    list-style-type: none;
+}
+
+.drawer-options-list-item {
+    padding: 15px 10px;
+    cursor: pointer;
+}
+
+.drawer-options-list-item:hover {
+    background-color: #cfff66;
+}
