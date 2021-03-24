@@ -10,7 +10,7 @@ export default function Navbar() {
     }
 
     return (
-        <nav className='navbar'>
+        <header className='navbar'>
             <div className='navbar-toggle'>
                 {
                     toggle ? <p onClick={open} className='toggle-box'>=</p> 
@@ -25,6 +25,6 @@ export default function Navbar() {
                     className='navbar-logo'
                 />
             </div>
-        </nav>
+        </header>
     )
 }
