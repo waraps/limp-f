@@ -7,13 +7,16 @@ import Footer from '../components/Footer'
 // Styles
 import '../assets/css/Dashboard.css'
 
+// routes
+import adminRoutes from '../routes/administrator'
+
 export default function Dashboard() {
     return (
         <>
             <Navbar />
             <main className='main-container'>
-                <Drawer />
-                <Container />
+                <Drawer nav={adminRoutes}/>
+                <Container routes={adminRoutes}/>
             </main>
             <Footer />
         </>
