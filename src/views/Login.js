@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
+import {useHistory} from 'react-router-dom'
 import logo from '../assets/img/logo.png'
 import '../assets/css/Login.css'
 
 import Loader from '../components/Loader'
 
 export default function Login() {
+    const history = useHistory();
     const [isLoading, setIsLoading] = useState(false)
     const [mail, setMail] = useState('')
     const [mailError, setMailError] = useState(false)
@@ -38,9 +40,10 @@ export default function Login() {
         e.preventDefault();
         if(isValid()) {
             setIsLoading(true)
-            console.log(mail, password)
             setTimeout(() => {
+                localStorage.setItem('user', 'user')
                 setIsLoading(false)
+                history.replace('/')
             }, 1000);
         }
     }
