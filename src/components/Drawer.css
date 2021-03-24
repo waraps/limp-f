@@ -38,8 +38,15 @@
 }
 
 .drawer-options-list-item {
+    display: block;
     padding: 15px 10px;
     cursor: pointer;
+    text-decoration: none;
+    color: #333;
+}
+
+.drawer-options-list-item:visited {
+    color: #333;
 }
 
 .drawer-options-list-item:hover {
