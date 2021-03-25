@@ -53,6 +53,37 @@
     background-color: #cfff66;
 }
 
+.drawer-options-list-item-active {
+    background-color: #cfff66;
+    border-bottom: .1px solid #96b949;
+    display: block;
+    padding: 15px 10px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #333;
+}
+
+.drawer-options-list-item-children-title{
+    margin-bottom: 5px;
+}
+
+.drawer-options-list-item-child {
+    display: block;
+    width: 100%;
+    padding: 6px 20px 6px 25px;
+    text-decoration: none;
+    color: #333;
+}
+
+.drawer-options-list-item-child:hover {
+    border-radius: 20px;
+    background-color: #96b949;
+}
+
+.drawer-options-list-item:visited {
+    color: #333;
+}
+
 /* @media only screen and (min-width: 960px) and (max-width: 1080px) {
     .drawer-container {
         display: block;
