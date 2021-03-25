@@ -13,13 +13,25 @@ export default function Container({routes}) {
                 {
                     routes.map((route, index) => {
                         return (
-                                <Route
-                                    key={index}
-                                    path={route.path}
-                                    exact={route.exact}
-                                    children={<route.main/>}
-                                />
-                            )
+                                route.children ? 
+                                                    route.children.map((child, index) => {
+                                                        return (
+                                                                <Route
+                                                                    key={index}
+                                                                    path={child.path}
+                                                                    exact={child.exact}
+                                                                    children={<child.main/>}
+                                                                />  
+                                                        )
+                                                    })
+                                                :
+                                                    <Route
+                                                        key={index}
+                                                        path={route.path}
+                                                        exact={route.exact}
+                                                        children={<route.main/>}
+                                                    />
+                        )
                     })
                 }
                 <Route path='/cambiar' component={ChangePassword}/>
