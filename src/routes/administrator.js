@@ -8,20 +8,59 @@ const adminRoutes = [
     icon: '*-',
     exact: true,
     main: () => <Home diff='Home'/>,
+    children: null,
   },
   {
     name: 'Tiendas',
-    path: '/tiendas',
     icon: '*-',
-    exact: true,
-    main: () => <Home diff='Tiendas'/>,
+    children: [
+      {
+        name: 'Listar',
+        path: '/tiendas/listar',
+        exact: true,
+        main: () => <Home diff='Tiendas Listado'/>,
+      },
+      {
+        name: 'Agregar',
+        path: '/tiendas/agregar',
+        exact: true,
+        main: () => <Home diff='Tiendas Agregar'/>,
+      },
+    ],
   },
   {
     name: 'Productos',
-    path: '/productos',
+    icon: '*-',
+    children: [
+      {
+        name: 'Listar',
+        path: '/productos/listar',
+        exact: true,
+        main: () => <Home diff='Producto Listado'/>,
+      },
+      {
+        name: 'Agregar',
+        path: '/productos/agregar',
+        exact: true,
+        main: () => <Home diff='Producto Agregar'/>,
+      },
+    ],
+  },
+  {
+    name: 'Facturas',
+    path: '/facturas',
     icon: '*-',
     exact: true,
-    main: () => <Home diff='Productos'/>,
+    main: () => <Home diff='Facturas'/>,
+    children: null,
+  },
+  {
+    name: 'Empleados',
+    path: '/empleados',
+    icon: '*-',
+    exact: true,
+    main: () => <Home diff='Empleados'/>,
+    children: null,
   },
 ];
 
