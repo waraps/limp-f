@@ -1,9 +1,20 @@
 import React from 'react'
+import {useHistory} from 'react-router-dom'
+import {Link} from "react-router-dom";
 import './Drawer.css'
 
-import {Link} from "react-router-dom";
+// components
+import Dropdown from './Dropdown'
 
 export default function Drawer({nav}) {
+    const history = useHistory();
+
+    const logout = () => {
+        setTimeout(() => {
+            localStorage.clear()
+            history.replace('/login')
+        }, 1000);
+    }
     return (
         <nav className='drawer-container'>
             <div className='drawer-title'>
@@ -16,12 +27,21 @@ export default function Drawer({nav}) {
                         nav.map((route, index) => {
                             return (
                                     <li key={index}>
-                                        <Link
-                                            className='drawer-options-list-item'
-                                            to={route.path}
-                                        >
-                                            {route.icon} {route.name}
-                                        </Link>
+                                        {
+                                            route.children ? 
+                                                            <Dropdown 
+                                                                icon={route.icon} 
+                                                                name={route.name} 
+                                                                routes={route.children}
+                                                            />
+                                                        :
+                                                            <Link
+                                                                className='drawer-options-list-item'
+                                                                to={route.path}
+                                                            >
+                                                                {route.icon} {route.name}
+                                                            </Link>
+                                        }
                                     </li>
                             )
                         })
@@ -40,7 +60,7 @@ export default function Drawer({nav}) {
                         </Link>
                     </li>
                     <li className='drawer-options-list-item' 
-                        onClick={() => alert('Adios')}
+                        onClick={logout}
                     >
                         *- Cerrar Sesion
                     </li>
