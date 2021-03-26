@@ -17,22 +17,29 @@ export default function Dropdown({icon, name, routes}) {
                 >
                     {icon} {name} {open ? <span>&#128314;</span> : <span>&#128315;</span>}
                 </div>
-                <ul>
-                    {
-                        open && routes.map((route, index) => {
-                            return (
-                                <li key={index}>
-                                    <Link
-                                        className='drawer-options-list-item-child'
-                                        to={route.path}
-                                    >
-                                        {route.name}
-                                    </Link>
-                                </li>
-                            )
-                        })
-                    }
-                </ul>
+                { 
+                    <ul 
+                        className={open
+                                        ?   'drawer-options-list-item-children-box-visible' 
+                                        :   'drawer-options-list-item-children-box'
+                                    }
+                    >
+                        {
+                             routes.map((route, index) => {
+                                return (
+                                    <li key={index}>
+                                        <Link
+                                            className='drawer-options-list-item-child'
+                                            to={route.path}
+                                        >
+                                            {route.name}
+                                        </Link>
+                                    </li>
+                                )
+                            })
+                        }
+                    </ul>
+                }
         </div>
     )
 }
