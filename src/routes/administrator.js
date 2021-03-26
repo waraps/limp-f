@@ -26,6 +26,12 @@ const adminRoutes = [
         exact: true,
         main: () => <Home diff='Tiendas Agregar'/>,
       },
+      {
+        name: 'Productos Tienda',
+        path: '/tiendas/producto',
+        exact: true,
+        main: () => <Home diff='Tiendas Productos'/>,
+      },
     ],
   },
   {
