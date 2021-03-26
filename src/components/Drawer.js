@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from "react-redux";
 import {useHistory} from 'react-router-dom'
 import {Link} from "react-router-dom";
 import './Drawer.css'
@@ -7,6 +8,7 @@ import './Drawer.css'
 import Dropdown from './Dropdown'
 
 export default function Drawer({nav}) {
+    const toggle = useSelector(state => state.toogle.isOpen)
     const history = useHistory();
 
     const logout = () => {
@@ -16,7 +18,7 @@ export default function Drawer({nav}) {
         }, 1000);
     }
     return (
-        <nav className='drawer-container'>
+        <nav className={toggle ? 'drawer-container-visible' : 'drawer-container'}>
             <div className='drawer-title'>
                 <h2>Hola, Jesus &#x1F44B;</h2>
             </div>

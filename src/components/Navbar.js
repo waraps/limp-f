@@ -1,20 +1,28 @@
-import React, {useState} from 'react'
+import React from 'react'
+import { useSelector, useDispatch } from "react-redux";
 import './Navbar.css'
 import Logo from '../assets/img/logo.png'
 
-export default function Navbar() {
-    const [toggle, setToggle] = useState(true)
+import { open, close } from '../redux/toogleSlice';
 
-    const open = () => {
-        setToggle(!toggle)
+export default function Navbar() {
+    const toggle = useSelector(state => state.toogle.isOpen)
+    const dispatch = useDispatch()
+
+    const openToogle = () => {
+        dispatch(open())
+    }
+
+    const closeToggle = () => {
+        dispatch(close())
     }
 
     return (
         <header className='navbar'>
             <div className='navbar-toggle'>
                 {
-                    toggle ? <p onClick={open} className='toggle-box'>=</p> 
-                           : <p onClick={open} className='toggle-box'>X</p>
+                    toggle ? <p onClick={openToogle} className='toggle-box'>X</p> 
+                           : <p onClick={closeToggle} className='toggle-box'>=</p>
                 }
             </div>
             <div className='navbar-info'>
