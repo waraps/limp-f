@@ -1,13 +1,17 @@
 import React, {useState} from 'react'
+import { useDispatch, useSelector } from "react-redux";
 import {useHistory} from 'react-router-dom'
 import logo from '../assets/img/logo.png'
 import '../assets/css/Login.css'
 
 import Loader from '../components/Loader'
 
+import { userData, loginFetch } from "../redux/loginSlice";
+
 export default function Login() {
+    const { loading } = useSelector(userData)
+    const dispatch = useDispatch()
     const history = useHistory();
-    const [isLoading, setIsLoading] = useState(false)
     const [mail, setMail] = useState('')
     const [mailError, setMailError] = useState(false)
     const [password, setPassword] = useState('')
@@ -39,16 +43,11 @@ export default function Login() {
     const send = e => {
         e.preventDefault();
         if(isValid()) {
-            setIsLoading(true)
-            setTimeout(() => {
-                localStorage.setItem('user', 'user')
-                setIsLoading(false)
-                history.replace('/')
-            }, 1000);
+            dispatch(loginFetch({mail, password}, history))
         }
     }
 
-    return isLoading ? (<Loader /> ): (
+    return loading ? (<Loader /> ): (
         <>
             <div className='navbar'>
                 <h3 className='navbar-title'>Bienvenido</h3>
