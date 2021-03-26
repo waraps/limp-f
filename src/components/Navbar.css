@@ -10,6 +10,7 @@
 }
 
 .navbar-toggle {
+    cursor: pointer;
     padding-left: 10px;
 }
 
