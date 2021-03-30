@@ -6,10 +6,10 @@ import '../assets/css/Login.css'
 
 import Loader from '../components/Loader'
 
-import { userData, loginFetch } from "../redux/loginSlice";
+import { userData, loginFetch } from "../redux/slices/loginSlice";
 
 export default function Login() {
-    const { loading } = useSelector(userData)
+    const { loading, error } = useSelector(userData)
     const dispatch = useDispatch()
     const history = useHistory();
     const [mail, setMail] = useState('')
@@ -92,6 +92,7 @@ export default function Login() {
                     />
                 </form>
             </div>
+            {error && <div>{error}</div>}
         </>
     )
 }
