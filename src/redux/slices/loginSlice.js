@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import auth from '../api/auth'
+import auth from '../../api/auth'
 
 export const loginSlice = createSlice({
     name: 'login',
     initialState: {
         loading: false,
         user: null,
-        error: false,
+        error: null,
     },
     reducers: {
         loginRequest: (state) => {
@@ -40,7 +40,8 @@ export const loginFetch = (credentials, history) =>  async dispatch => {
         dispatch(loginSuccess(employee))
         history.replace('/')
     } catch (error) {
-        dispatch(loginError(error))
+        const { message } = error.response.data
+        dispatch(loginError(message))
     }
 }
 

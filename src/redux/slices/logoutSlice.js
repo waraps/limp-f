@@ -4,7 +4,7 @@ export const logoutSlice = createSlice({
     name: 'logout',
     initialState: {
         loading: false,
-        error: false,
+        error: null,
     },
     reducers: {
         logoutRequest: state => {
@@ -28,13 +28,14 @@ export const logoutFetch =  (history) =>  dispatch => {
     try {
         dispatch(logoutRequest())
         setTimeout(() => {
-            // const response = await 
-            localStorage.clear()
-            dispatch(logoutSuccess())
+            // const response = await
             history.replace('/login')
+            dispatch(logoutSuccess())
+            localStorage.clear()
         }, 1000);
     } catch (error) {
-        dispatch(logoutError(error))
+        const { message } = error.response.data
+        dispatch(logoutError(message))
     }
 }
 
