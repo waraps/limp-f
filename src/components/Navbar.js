@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import './Navbar.css'
 import Logo from '../assets/img/logo.png'
 
-import { open, close } from '../redux/toogleSlice';
+import { open, close } from '../redux/slices/toogleSlice';
 
 export default function Navbar() {
     const toggle = useSelector(state => state.toogle.isOpen)
