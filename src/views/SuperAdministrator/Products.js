@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { productData, getProducts } from '../../redux/slices/productSlice';
 
 // components
-import Loader from '../../components/Loader'
+import Loader from '../../components/Loader/Loader'
 
 export default function Products() {
     const dispatch = useDispatch()

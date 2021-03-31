@@ -4,7 +4,7 @@ import {useHistory} from 'react-router-dom'
 import logo from '../assets/img/logo.png'
 import '../assets/css/Login.css'
 
-import Loader from '../components/Loader'
+import Loader from '../components/Loader/Loader'
 
 import { userData, loginFetch } from "../redux/slices/loginSlice";
 

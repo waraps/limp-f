@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
 
 // Components
-import Navbar from '../components/Navbar'
-import Drawer from '../components/Drawer'
-import Container from '../components/Container'
-import Footer from '../components/Footer'
-import Loader from '../components/Loader'
+import Navbar from '../components/Navbar/Navbar'
+import Drawer from '../components/Drawer/Drawer'
+import Container from '../components/Container/Container'
+import Footer from '../components/Footer/Footer'
+import Loader from '../components/Loader/Loader'
 
 import { logoutStatus } from '../redux/slices/logoutSlice'
 

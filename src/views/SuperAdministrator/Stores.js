@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { storeData, getStores } from '../../redux/slices/storeSlice';
 
 // components
-import Loader from '../../components/Loader'
+import Loader from '../../components/Loader/Loader'
 
 export default function Stores() {
     const dispatch = useDispatch()

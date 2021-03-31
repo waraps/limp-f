@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clientData, getClients } from '../../redux/slices/clientSlice';
 
 // components
-import Loader from '../../components/Loader'
+import Loader from '../../components/Loader/Loader'
 
 export default function Clients() {
     const dispatch = useDispatch()

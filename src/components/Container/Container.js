@@ -1,8 +1,8 @@
 import React from 'react'
 import './Container.css'
 
-import ChangePassword from '../views/ChangePassword'
-import NotFound from '../views/NotFound'
+import ChangePassword from '../../views/ChangePassword'
+import NotFound from '../../views/NotFound'
 
 import { Switch, Route } from 'react-router-dom';
 

@@ -4,8 +4,8 @@ import {useHistory} from 'react-router-dom'
 import {Link} from "react-router-dom";
 import './Drawer.css'
 
-import { userData } from "../redux/slices/loginSlice";
-import { logoutFetch } from '../redux/slices/logoutSlice'
+import { userData } from "../../redux/slices/loginSlice";
+import { logoutFetch } from '../../redux/slices/logoutSlice'
 
 // components
 import Dropdown from './Dropdown'
