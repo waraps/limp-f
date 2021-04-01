@@ -1,11 +1,62 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './DataTable.css'
 
 export default function DataTable({data, tablename, columns}) {
-    const [order, setOrder] = useState(false)
+    const [change, setChange] = useState(false)
+    const [objectKey] = useState(data ? Object.keys(data[0]) : null)
+    const [titles, setTitles] = useState(columns.map((column, index) => {
+                                            return {
+                                                id: index,
+                                                title: column,
+                                                order: false,
+                                                name: objectKey ? objectKey[index] : ''
+                                            }
+                                        }))
 
-    const orderBy = () => {
-        setOrder(!order)
+    useEffect(() => {}, [change])
+
+    const orderBy = (title) => {
+        let aux = titles
+        const titleAux = aux[title.id]
+        titleAux.order = !titleAux.order
+
+        if(titleAux.order) {
+            data = sortAsc(data, title.name)
+        } else {
+            data = sortDsc(data, title.name)
+        }
+        setTitles(aux)
+        setChange(!change)
+    }
+
+    const sortAsc = (a, name) => {
+        let swapped;
+        do {
+            swapped = false;
+            for (var i=0; i < a.length-1; i++) {
+                if (a[i][name] < a[i+1][name]) {
+                    var temp = a[i];
+                    a[i] = a[i+1];
+                    a[i+1] = temp;
+                    swapped = true;
+                }
+            }
+        } while (swapped);
+    }
+
+    const sortDsc = (a, name) => {
+        let swapped;
+        do {
+            swapped = false;
+            for (var i=0; i < a.length-1; i++) {
+                if (a[i][name] > a[i+1][name]) {
+                    var temp = a[i];
+                    a[i] = a[i+1];
+                    a[i+1] = temp;
+                    swapped = true;
+                }
+            }
+        } while (swapped);
     }
 
     return data ? (
@@ -13,16 +64,17 @@ export default function DataTable({data, tablename, columns}) {
                             <div className='table-body'>
                                 <div className='titles'>
                                     {
-                                        columns && columns.map(column => {
+                                        titles && titles.map(title => {
                                             return <div 
                                                         className='column' 
-                                                        key={column}
+                                                        key={title.id}
                                                     >
-                                                        <span 
+                                                        <span
+                                                            key={`${title.id}-title`} 
                                                             className='title-text'
-                                                            onClick={orderBy}
+                                                            onClick={() => orderBy(title)}
                                                         >
-                                                            {column} {order ? '(desc)' : '(asc)'}
+                                                            {title.title} {title.order ? '(desc)' : '(asc)'}
                                                         </span>
                                                     </div>
                                         })
@@ -34,11 +86,18 @@ export default function DataTable({data, tablename, columns}) {
                                             return <div className='row'
                                                         key={data.id}
                                                     >
-                                                        <div className='column'>{data.name}</div>
-                                                        <div className='column'>{data.address}</div>
-                                                        <div className='column'>{data.mail}</div>
-                                                        <div className='column'>{data.phone}</div>
-                                                        <div className='column'>{data.created_at}</div>
+                                                        {
+                                                            Object.values(data).map(property => {
+                                                                return (
+                                                                    <div 
+                                                                        className='column' 
+                                                                        key={`${property}-${data.id}`}
+                                                                    >
+                                                                        {property}
+                                                                    </div>
+                                                                )
+                                                            })
+                                                        }
                                                     </div>
                                         })
                                     }
