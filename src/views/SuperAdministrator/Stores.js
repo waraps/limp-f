@@ -12,16 +12,27 @@ export default function Stores() {
     const { loading, error, stores } = useSelector(storeData)
 
     const columns = [
+        'ID',
         'Nombre',
         'Direccion',
         'Correo',
         'Telefono',
-        'Registro'
+        'Registro',
     ]
+
+    const data = !stores ? [] : stores.map(store => {
+        return {
+            id: store.id,
+            name: store.name ? store.name : '-',
+            address: store.address ? store.address : '-',
+            mail: store.mail ? store.mail : '-',
+            phone: store.phone ? store.phone: '-',
+            created_at: store.created_at ? store.created_at : '-'
+        }
+    })
 
     useEffect(() => {
         dispatch(getStores())
-        console.log(stores)
     }, [])
 
     return loading ? 
@@ -32,7 +43,7 @@ export default function Stores() {
                             <br />
                             <DataTable
                                 tablename='Tiendas'
-                                data={stores}
+                                data={data}
                                 columns={columns} 
                             />
                             {error && <div>{error}</div>}

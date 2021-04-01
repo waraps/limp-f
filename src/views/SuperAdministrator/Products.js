@@ -5,26 +5,46 @@ import { productData, getProducts } from '../../redux/slices/productSlice';
 
 // components
 import Loader from '../../components/Loader/Loader'
+import DataTable from '../../components/DataTable/DataTable'
+
+// utils
+import formatNumber from '../../utils/formatNumber'
 
 export default function Products() {
     const dispatch = useDispatch()
     const { loading, error, products } = useSelector(productData)
 
+    const columns = [
+        'ID',
+        'Nombre',
+        'Precio',
+        'Registrado',
+    ]
+
+    const data = !products ? null : products.map(product => {
+        return {
+            id: product.id,
+            name: product.name ? product.name : '-',
+            address: product.price ? formatNumber(product.price, '$') : '-',
+            created_at: product.created_at ? product.created_at : '-'
+        }
+    })
+
     useEffect(() => {
         dispatch(getProducts())
     }, [])
 
-    return loading ? <Loader /> : (
-        <div>
-            {
-                products ? 
-                            products.map(product => {
-                                return <div key={product.id}>{product.name}</div>
-                            })
-                        :
-                        <div>No hay Products que mostrar</div>
-            }
-            {error && <div>{error}</div>}
-        </div>
-    )
+    return loading ? 
+                        <Loader /> 
+                    : 
+                        <>
+                            <h1>Productos</h1>
+                            <br />
+                            <DataTable
+                                tablename='Productos'
+                                data={data}
+                                columns={columns} 
+                            />
+                            {error && <div>{error}</div>}
+                        </>
 }
