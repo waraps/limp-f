@@ -1,0 +1,84 @@
+.table-container {
+    border-radius: 2px;
+    background-color: white;
+    box-shadow: 0 0 4px 0 rgba(5, 5, 5, 0.2);
+    color: #333;
+}
+
+.table-empty {
+    padding: 20px;
+    border-radius: 2px;
+    background-color: white;
+    box-shadow: 0 0 4px 0 rgba(5, 5, 5, 0.2);
+    color: #333;
+}
+
+.titles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: whitesmoke;
+}
+
+.title-text {
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.row:hover {
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+.column {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.table-footer {
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: whitesmoke;
+}
+
+.table-pagination {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.table-lenght-data {
+    font-weight: 700;
+}
+
+.table-footer-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 32px;
+    margin: 0 1px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    cursor: pointer;
+    box-shadow: 0 0 4px 0 rgba(5, 5, 5, 0.2);
+}
+
+.table-numbers {
+    margin: 0 5px;
+}

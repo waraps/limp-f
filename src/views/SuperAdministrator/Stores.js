@@ -5,26 +5,36 @@ import { storeData, getStores } from '../../redux/slices/storeSlice';
 
 // components
 import Loader from '../../components/Loader/Loader'
+import DataTable from '../../components/DataTable/DataTable'
 
 export default function Stores() {
     const dispatch = useDispatch()
     const { loading, error, stores } = useSelector(storeData)
 
+    const columns = [
+        'Nombre',
+        'Direccion',
+        'Correo',
+        'Telefono',
+        'Registro'
+    ]
+
     useEffect(() => {
         dispatch(getStores())
+        console.log(stores)
     }, [])
 
-    return loading ? <Loader /> : (
-        <div>
-            {
-                stores ? 
-                            stores.map(store => {
-                                return <div key={store.id}>{store.name}</div>
-                            })
-                        :
-                        <div>No hay Tiendas que mostrar</div>
-            }
-            {error && <div>{error}</div>}
-        </div>
-    )
+    return loading ? 
+                        <Loader /> 
+                    : 
+                        <>
+                            <h1>Tiendas</h1>
+                            <br />
+                            <DataTable
+                                tablename='Tiendas'
+                                data={stores}
+                                columns={columns} 
+                            />
+                            {error && <div>{error}</div>}
+                        </>
 }
