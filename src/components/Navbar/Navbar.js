@@ -3,6 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import './Navbar.css'
 import Logo from '../../assets/img/logo.png'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
+
 import { open, close } from '../../redux/slices/toogleSlice';
 
 export default function Navbar() {
@@ -21,8 +25,8 @@ export default function Navbar() {
         <header className='navbar'>
             <div className='navbar-toggle'>
                 {
-                    toggle ? <p onClick={openToogle} className='toggle-box'>X</p> 
-                           : <p onClick={closeToggle} className='toggle-box'>=</p>
+                    toggle ? <p onClick={openToogle} className='toggle-box'><FontAwesomeIcon icon={faBars} /></p> 
+                           : <p onClick={closeToggle} className='toggle-box'><FontAwesomeIcon icon={faTimes} /></p>
                 }
             </div>
             <div className='navbar-info'>

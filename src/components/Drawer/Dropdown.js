@@ -1,6 +1,11 @@
 import React, {useState} from 'react'
 import {Link} from "react-router-dom";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
+
 export default function Dropdown({icon, name, routes}) {
     const [open, setOpen] = useState(false)
 
@@ -15,7 +20,10 @@ export default function Dropdown({icon, name, routes}) {
                     className='drawer-options-list-item-children-title' 
                     onClick={openDropdown}
                 >
-                    {icon} {name} {open ? <span>&#128314;</span> : <span>&#128315;</span>}
+                    <div className='drawer-options-list-item-children-icon'>
+                        <div>{icon} {name}</div> 
+                        {open ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}
+                    </div>
                 </div>
                 { 
                     <ul 

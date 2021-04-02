@@ -1,3 +1,10 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHome } from '@fortawesome/free-solid-svg-icons'
+import { faStore } from '@fortawesome/free-solid-svg-icons'
+import { faPumpSoap } from '@fortawesome/free-solid-svg-icons'
+import { faIdCard } from '@fortawesome/free-solid-svg-icons'
+import { faUserFriends } from '@fortawesome/free-solid-svg-icons'
+
 // Components
 import Home from '../../views/SuperAdministrator/Home';
 import Stores from '../../views/SuperAdministrator/Stores'
@@ -8,14 +15,14 @@ const superAdminRoutes = [
   {
     name: 'Inicio',
     path: '/',
-    icon: '*-',
+    icon: <FontAwesomeIcon icon={faHome} />,
     exact: true,
     main: () => <Home diff='Home'/>,
     children: null,
   },
   {
     name: 'Tiendas',
-    icon: '*-',
+    icon: <FontAwesomeIcon icon={faStore} />,
     children: [
       {
         name: 'Listar',
@@ -33,7 +40,7 @@ const superAdminRoutes = [
   },
   {
     name: 'Productos',
-    icon: '*-',
+    icon: <FontAwesomeIcon icon={faPumpSoap} />,
     children: [
       {
         name: 'Listar',
@@ -50,9 +57,17 @@ const superAdminRoutes = [
     ],
   },
   {
+    name: 'Empleados',
+    path: '/clientes',
+    icon: <FontAwesomeIcon icon={faIdCard} />,
+    exact: true,
+    main: () => <Clients />,
+    children: null,
+  },
+  {
     name: 'Clientes',
     path: '/clientes',
-    icon: '*-',
+    icon: <FontAwesomeIcon icon={faUserFriends} />,
     exact: true,
     main: () => <Clients />,
     children: null,

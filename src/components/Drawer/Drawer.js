@@ -4,6 +4,10 @@ import {useHistory} from 'react-router-dom'
 import {Link} from "react-router-dom";
 import './Drawer.css'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { faKey } from '@fortawesome/free-solid-svg-icons'
+
 import { userData } from "../../redux/slices/loginSlice";
 import { logoutFetch } from '../../redux/slices/logoutSlice'
 
@@ -60,13 +64,13 @@ export default function Drawer({nav}) {
                             className='drawer-options-list-item'
                             to='/Cambiar'
                         >
-                            *- Cambiar Contrasena
+                            <FontAwesomeIcon icon={faKey} /> Cambiar Contrasena
                         </Link>
                     </li>
                     <li className='drawer-options-list-item' 
                         onClick={logout}
                     >
-                        *- Cerrar Sesion
+                        <FontAwesomeIcon icon={faSignOutAlt} /> Cerrar Sesion
                     </li>
                 </ul>
             </div>
