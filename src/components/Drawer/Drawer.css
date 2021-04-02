@@ -107,6 +107,12 @@
     background-color: #96b949;
 }
 
+.drawer-options-list-item-children-icon{
+    display: flex;
+    justify-content: space-between;
+}
+
+
 .drawer-options-list-item:visited {
     color: #333;
 }
