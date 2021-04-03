@@ -23,10 +23,13 @@
     justify-content: flex-end;
     padding: 15px;
     margin-bottom: 5px;
+    
 }
 
 .table-input-search-container {
-    width: 18%;
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
     padding: 10px 0;
     font-size: 20px;
     color: #ccc;
@@ -34,6 +37,7 @@
 }
 
 .table-input-search {
+    width: 80%;
     color: #444;
     font-size: 16px;
     border: 0;
@@ -88,6 +92,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #444;
+    font-weight: 500;
 }
 
 .table-pagination {
@@ -97,7 +103,7 @@
 }
 
 .table-lenght-data {
-    font-weight: 700;
+    /* font-weight: 700; */
 }
 
 .table-footer-btn {
@@ -106,11 +112,11 @@
     align-items: center;
     font-size: 18px;
     margin: 0 5px;
-    color: #444;
     cursor: pointer;
 }
 
 .table-numbers {
     margin: 0 5px;
     color: tomato;
+    font-weight: 400;
 }
