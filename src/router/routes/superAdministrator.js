@@ -9,6 +9,7 @@ import { faUserFriends } from '@fortawesome/free-solid-svg-icons'
 import Home from '../../views/SuperAdministrator/Home';
 import Stores from '../../views/SuperAdministrator/Stores'
 import Products from '../../views/SuperAdministrator/Products'
+import Employees from '../../views/SuperAdministrator/Employees'
 import Clients from '../../views/SuperAdministrator/Clients'
 
 const superAdminRoutes = [
@@ -58,11 +59,22 @@ const superAdminRoutes = [
   },
   {
     name: 'Empleados',
-    path: '/clientes',
+    path: '/empleados',
     icon: <FontAwesomeIcon icon={faIdCard} />,
-    exact: true,
-    main: () => <Clients />,
-    children: null,
+    children: [
+      {
+        name: 'Listar',
+        path: '/empleados/listar',
+        exact: true,
+        main: () => <Employees />,
+      },
+      {
+        name: 'Agregar',
+        path: '/empleados/agregar',
+        exact: true,
+        main: () => <Home diff='Empleado Agregar'/>,
+      },
+    ],
   },
   {
     name: 'Clientes',
