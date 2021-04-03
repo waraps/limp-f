@@ -32,12 +32,13 @@ export default function DataTable({data, tablename, columns}) {
             return {
                 id: title.id,
                 title: title.title,
-                order: false,
+                order: title.order,
                 name: title.name
             }
         })
+        console.log(aux)
         const titleAux = aux[title.id]
-        titleAux.order = true
+        titleAux.order = !titleAux.order
 
         if(titleAux.order) {
             data = sortAsc(data, title.name)
