@@ -1,7 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import './DataTable.css'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSortAlphaUp } from '@fortawesome/free-solid-svg-icons'
+import { faSortAlphaDown } from '@fortawesome/free-solid-svg-icons'
+
 export default function DataTable({data, tablename, columns}) {
+    const [search, setSearch] = useState('')
     const [change, setChange] = useState(false)
     const [objectKey] = useState(data ? Object.keys(data[0]) : null)
     const [titles, setTitles] = useState(columns.map((column, index) => {
@@ -59,9 +64,24 @@ export default function DataTable({data, tablename, columns}) {
         } while (swapped);
     }
 
+    const searching = e => {
+        setSearch(e.target.value)
+        console.log(e.target.value)
+        let result = []
+        
+        if(e.target.value === '') {
+            result = data
+            console.log(result)
+        } else {
+            result = data.filter(searchData => searchData.name.toLowerCase().indexOf(e.target.value.toLowerCase()) > - 1);
+            console.log(result)
+        }
+    }
+
     return data ? (
                         <div className='table-container'> 
                             <div className='table-body'>
+                                <div>busqueda <input value={search} onChange={searching}/></div>
                                 <div className='titles'>
                                     {
                                         titles && titles.map(title => {
@@ -74,7 +94,7 @@ export default function DataTable({data, tablename, columns}) {
                                                             className='title-text'
                                                             onClick={() => orderBy(title)}
                                                         >
-                                                            {title.title} {title.order ? '(desc)' : '(asc)'}
+                                                            {title.title} {title.order ? <FontAwesomeIcon icon={faSortAlphaDown} /> : <FontAwesomeIcon icon={faSortAlphaUp} />}
                                                         </span>
                                                     </div>
                                         })
