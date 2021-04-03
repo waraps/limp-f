@@ -16,4 +16,33 @@ instance.interceptors.request.use(config => {
     return configuration
 })
 
-export default instance
+instance.interceptors.response.use((response) => {
+        return response
+    }, async function (error) {
+        const originalRequest = error.config;
+ 
+        if (error.response.status === 401 && originalRequest.url === `${process.env.REACT_APP_BASE_URL}/refresh`) {
+                window.location.replace('/login')
+                localStorage.clear()
+                return Promise.reject(error);
+        }
+    
+        if (error.response.status === 401 && !originalRequest._retry) {
+        
+            originalRequest._retry = true;
+            const refreshToken = localStorage.getItem('refresh');
+            const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/refresh`, {}, {
+                headers: {
+                  Authorization: 'Bearer ' + refreshToken
+                }
+               })
+            if (response.status === 200) {
+                localStorage.setItem('token', response.data.access_token);
+                instance.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
+                return axios(originalRequest);
+            }
+        }
+        return Promise.reject(error);
+ });
+ 
+ export default instance
