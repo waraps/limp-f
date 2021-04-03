@@ -7,8 +7,8 @@ const client = {
     getClientClient(id){
         return API.get(`/client/${id}`)
     },
-    createClient(product){
-        return API.post('/client', product)
+    createClient(client){
+        return API.post('/client', client)
     },
 }
 
