@@ -2,8 +2,15 @@ import React, {useState, useEffect} from 'react'
 import './DataTable.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSortAlphaUp } from '@fortawesome/free-solid-svg-icons'
-import { faSortAlphaDown } from '@fortawesome/free-solid-svg-icons'
+import { 
+            faSearch, 
+            faSortAmountUpAlt, 
+            faSortAmountDownAlt,
+            faAngleRight,
+            faAngleLeft,
+            faAngleDoubleRight,
+            faAngleDoubleLeft 
+        } from '@fortawesome/free-solid-svg-icons'
 
 export default function DataTable({data, tablename, columns}) {
     const [search, setSearch] = useState('')
@@ -21,9 +28,16 @@ export default function DataTable({data, tablename, columns}) {
     useEffect(() => {}, [change])
 
     const orderBy = (title) => {
-        let aux = titles
+        let aux = titles.map(title => {
+            return {
+                id: title.id,
+                title: title.title,
+                order: false,
+                name: title.name
+            }
+        })
         const titleAux = aux[title.id]
-        titleAux.order = !titleAux.order
+        titleAux.order = true
 
         if(titleAux.order) {
             data = sortAsc(data, title.name)
@@ -81,7 +95,17 @@ export default function DataTable({data, tablename, columns}) {
     return data ? (
                         <div className='table-container'> 
                             <div className='table-body'>
-                                <div>busqueda <input value={search} onChange={searching}/></div>
+                                <div className='table-input-search-main-container'>
+                                    <div className='table-input-search-container'> 
+                                        <input
+                                            className='table-input-search'
+                                            placeholder='Buscar'
+                                            value={search} 
+                                            onChange={searching}
+                                        />
+                                        <FontAwesomeIcon icon={faSearch} />
+                                    </div>
+                                </div>
                                 <div className='titles'>
                                     {
                                         titles && titles.map(title => {
@@ -91,10 +115,15 @@ export default function DataTable({data, tablename, columns}) {
                                                     >
                                                         <span
                                                             key={`${title.id}-title`} 
-                                                            className='title-text'
+                                                            className='title-text-container'
                                                             onClick={() => orderBy(title)}
                                                         >
-                                                            {title.title} {title.order ? <FontAwesomeIcon icon={faSortAlphaDown} /> : <FontAwesomeIcon icon={faSortAlphaUp} />}
+                                                            <span className='title-text'>{title.title}</span> 
+                                                            {
+                                                                title.order ? 
+                                                                                <FontAwesomeIcon icon={faSortAmountUpAlt} /> 
+                                                                            :   <FontAwesomeIcon icon={faSortAmountDownAlt} />
+                                                            }
                                                         </span>
                                                     </div>
                                         })
@@ -127,17 +156,23 @@ export default function DataTable({data, tablename, columns}) {
                                     <div className='table-lenght-data'>
                                         Mostrando {data.length > 5 ? '5' : data.length} registros de {data.length}
                                     </div>
-                                    {
-                                        data.length > 5 && <div className='table-pagination'>
-                                                                <div className='table-footer-btn'>{'<<'}</div>
-                                                                <div className='table-footer-btn'>{'<'}</div>
-                                                                <div className='table-numbers'>
-                                                                    1 2 3 ... {data.length}
-                                                                </div>
-                                                                <div className='table-footer-btn'>{'>'}</div>
-                                                                <div className='table-footer-btn'>{'>>'}</div>
-                                                            </div>
-                                    }
+                                    <div className='table-pagination'>
+                                        <div className='table-footer-btn'>
+                                            <FontAwesomeIcon icon={faAngleDoubleLeft} />
+                                        </div>
+                                        <div className='table-footer-btn'>
+                                            <FontAwesomeIcon icon={faAngleLeft} />
+                                        </div>
+                                        <div className='table-numbers'>
+                                            1 2 3 ... {data.length}
+                                        </div>
+                                        <div className='table-footer-btn'>
+                                            <FontAwesomeIcon icon={faAngleRight} />
+                                        </div>
+                                        <div className='table-footer-btn'>
+                                            <FontAwesomeIcon icon={faAngleDoubleRight} />
+                                        </div>
+                                    </div>
                             </div>
                         </div>
                     ) 
