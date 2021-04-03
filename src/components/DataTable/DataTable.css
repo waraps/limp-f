@@ -6,25 +6,60 @@
 }
 
 .table-empty {
-    padding: 20px;
+    padding: 50px;
     border-radius: 2px;
     background-color: white;
     box-shadow: 0 0 4px 0 rgba(5, 5, 5, 0.2);
     color: #333;
 }
 
+.table-body {
+    min-height: 250px;
+}
+
+.table-input-search-main-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px;
+    margin-bottom: 5px;
+}
+
+.table-input-search-container {
+    width: 18%;
+    padding: 10px 0;
+    font-size: 20px;
+    color: #ccc;
+    border-bottom: .5px solid #ccc;
+}
+
+.table-input-search {
+    color: #444;
+    font-size: 16px;
+    border: 0;
+}
+
+.table-input-search:focus {
+    outline: none;
+}
+
 .titles {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    background-color: whitesmoke;
+    padding: 15px 18px;
+    color: #444;
+    /* background-color: whitesmoke; */
+}
+
+.title-text-container {
+    font-weight: 500;
+    cursor: pointer;
 }
 
 .title-text {
-    font-size: 20px;
-    font-weight: 700;
-    cursor: pointer;
+    /* font-size: 20px; */
+    margin-right: 5px;
 }
 
 .row {
@@ -32,11 +67,11 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    border-bottom: 1px solid #f5f5f5;
+    border: .5px solid #f3f3f3;
 }
 
 .row:hover {
-    background-color: #ccc;
+    background-color: whitesmoke;
     cursor: pointer;
 }
 
@@ -48,11 +83,11 @@
 }
 
 .table-footer {
-    padding: 10px;
+    margin-top: 5px;
+    padding: 20px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    background-color: whitesmoke;
 }
 
 .table-pagination {
@@ -69,16 +104,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30px;
-    height: 32px;
-    margin: 0 1px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 2px;
+    font-size: 18px;
+    margin: 0 5px;
+    color: #444;
     cursor: pointer;
-    box-shadow: 0 0 4px 0 rgba(5, 5, 5, 0.2);
 }
 
 .table-numbers {
     margin: 0 5px;
+    color: tomato;
 }
