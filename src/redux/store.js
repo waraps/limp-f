@@ -4,6 +4,7 @@ import loginReducer from './slices/loginSlice'
 import logoutReducer from './slices/logoutSlice'
 import storeReducer from './slices/storeSlice'
 import productReducer from './slices/productSlice'
+import employeeReducer from './slices/employeeSlice'
 import clientReducer from './slices/clientSlice'
 
 export default configureStore({
@@ -14,5 +15,6 @@ export default configureStore({
         store: storeReducer,
         product: productReducer,
         client: clientReducer,
+        employee: employeeReducer,
     }
 })
