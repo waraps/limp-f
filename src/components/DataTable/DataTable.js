@@ -32,7 +32,7 @@ export default function DataTable({data, tablename, columns}) {
             return {
                 id: title.id,
                 title: title.title,
-                order: title.order,
+                order: title.order ? !title.order : title.order,
                 name: title.name
             }
         })
