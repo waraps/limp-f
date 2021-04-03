@@ -5,26 +5,49 @@ import { clientData, getClients } from '../../redux/slices/clientSlice';
 
 // components
 import Loader from '../../components/Loader/Loader'
+import DataTable from '../../components/DataTable/DataTable'
 
 export default function Clients() {
     const dispatch = useDispatch()
     const { loading, error, clients } = useSelector(clientData)
 
+    const columns = [
+        'ID',
+        'Nombre',
+        'Apellido',
+        'Correo',
+        'Telefono',
+        'Cedula',
+        'Registrado'
+    ]
+
+    const data = !clients ? null : clients.map(client => {
+        return {
+            id: client.id,
+            name: client.name,
+            lastname: client.lastname,
+            mail: client.mail,
+            phone: client.phone,
+            dni: client.dni,
+            created_at: client.created_at
+        }
+    })
+
     useEffect(() => {
         dispatch(getClients())
     }, [])
 
-    return loading ? <Loader /> : (
-        <div>
-            {
-                clients ? 
-                            clients.map(client => {
-                                return <div key={client.id}>{client.name}</div>
-                            })
-                        :
-                        <div>No hay Clientes que mostrar</div>
-            }
-            {error && <div>{error}</div>}
-        </div>
-    )
+    return loading ? 
+                        <Loader /> 
+                    : 
+                        <>
+                            <h1>Clientes</h1>
+                            <br />
+                            <DataTable
+                                tablename='Productos'
+                                data={data}
+                                columns={columns} 
+                            />
+                            {error && <div>{error}</div>}
+                        </>
 }
