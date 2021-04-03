@@ -20,7 +20,7 @@ export default function Stores() {
         'Registro',
     ]
 
-    const data = !stores ? [] : stores.map(store => {
+    const data = !stores ? null : stores.map(store => {
         return {
             id: store.id,
             name: store.name ? store.name : '-',
